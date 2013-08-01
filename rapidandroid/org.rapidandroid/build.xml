@@ -33,7 +33,8 @@
          secure.properties file is NEVER checked into public accessible version control.
          It will only exist on the access controlled build server
          -->
-    <property file="secure.properties" />
+<!--     <property file="secure.properties" /> -->
+    <property file="C:\devtools\KEYSTORES\secure.properties" />
 
     <!-- if sdk.dir was not set from one of the property file, then
          get it from the ANDROID_HOME env var.
