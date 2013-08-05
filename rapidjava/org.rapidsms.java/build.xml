@@ -1,0 +1,11 @@
+<project name="rapidsms" default="jar">
+    <target name="jar">
+        <mkdir dir="ant-out" />
+    	<javac destdir="ant-out" srcdir="src">
+    		<classpath>
+    			<fileset dir="../../rapidandroid/org.rapidandroid/lib" includes="commons-lang-*.jar"/>
+    		</classpath>
+    	</javac>
+    	<jar destfile="../../rapidandroid/org.rapidandroid/libs/rapidsms.jar" basedir="ant-out"/>
+    </target>
+</project>
