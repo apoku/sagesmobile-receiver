@@ -26,6 +26,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Vector;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -37,11 +38,13 @@ import org.rapidsms.java.core.model.Field;
 import org.rapidsms.java.core.model.Form;
 import org.rapidsms.java.core.model.SimpleFieldType;
 import org.rapidsms.java.core.parser.service.ParsingService.ParserType;
+
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Environment;
 import android.provider.BaseColumns;
 import android.util.Log;
 
@@ -108,8 +111,7 @@ public class ModelBootstrap {
 	
 	//TODO: make less code repeat
 	private static String loadSdCardFile(String filename) {
-		// InputStream is = mContext.getAssets().open(filename);
-		File file = new File(filename);
+		File file = new File(Environment.getExternalStorageDirectory() + "/" + filename);
 		if (!file.exists()){
 			return null;
 		}
@@ -139,7 +141,7 @@ public class ModelBootstrap {
 	 * Initial app startup, ONLY SHOULD BE RUN ONCE!!! called when the existence
 	 * of some data in the fieldtypes table is missing.
 	 * 
-	 * external-custom-fieldtypes: place them here: /sdcard/rapidandroid/externalcustomfieldtypes.json
+	 * external-custom-fieldtypes: place them here: /$sdcard/rapidandroid/externalcustomfieldtypes.json
 	 */
 	private static void applicationInitialFormFieldTypesBootstrap() {
 		healthTracker.logInfo("Loading field types and forms from assets.");
@@ -213,7 +215,7 @@ public class ModelBootstrap {
 		String types = loadAssetFile("definitions/fieldtypes.json");
 		String customtypes = loadAssetFile("definitions/customfieldtypes.json");
 		// SAGES: loading the custom fieldtype files 
-		String externalcustomtypes = loadSdCardFile("/sdcard/rapidandroid/externalcustomfieldtypes.json");
+		String externalcustomtypes = loadSdCardFile("rapidandroid/externalcustomfieldtypes.json");
 		
 		try {
 			JSONArray typesarray = new JSONArray(types);
@@ -312,7 +314,7 @@ public class ModelBootstrap {
 	 */
 	// TODO pokuam1 - refactor to reuse original method, see parseFieldsFromAssets()
 	private static void parseFieldsFromLoadableAssets() {
-		String sdcardFields = loadSdCardFile("/sdcard/rapidandroid/loadablefields.json");
+		String sdcardFields = loadSdCardFile("rapidandroid/loadablefields.json");
 
 		if (sdcardFields != null){
 		try {
@@ -417,6 +419,8 @@ public class ModelBootstrap {
 					Form newform = new Form(pk, jsonfields.getString("formname"), jsonfields.getString("prefix"),
 											jsonfields.getString("description"), fieldarr, 
 											ParserType.getTypeFromConfig(jsonfields.getString("parsemethod")));
+					Log.d("dimagi", "#### Parsed form: " + newform.getFormId() + " [" + newform.getFormName()
+							+ "] totalForms: " + formIdCache.size() + 1);
 					formIdCache.put(pkInt, newform);
 
 				} catch (JSONException e) {
@@ -436,7 +440,7 @@ public class ModelBootstrap {
 	// TODO pokuam1 - refactor to reuse original method, see parseFormsFromAssets()
 	private static void parseFormsFromLoadableAssets() {
 		// String forms = loadAssetFile("definitions/forms.json");
-		String sdcardForms = loadSdCardFile("/sdcard/rapidandroid/loadableforms.json");
+		String sdcardForms = loadSdCardFile("rapidandroid/loadableforms.json");
 
 		if (sdcardForms != null) {
 			try {

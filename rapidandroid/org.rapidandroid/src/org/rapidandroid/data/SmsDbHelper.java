@@ -47,7 +47,7 @@ public class SmsDbHelper extends SQLiteOpenHelper {
 	private static final String TAG = "SmsDbHelper";
 
 	private static final String DATABASE_NAME = "rapidandroid.db";
-	private static final String DATABASE_PATH_EXTERNAL = "/sdcard/rapidandroid/rapidandroid.db";
+	private static final String DATABASE_PATH_EXTERNAL = Environment.getExternalStorageDirectory() + "/rapidandroid/rapidandroid.db";
 	private static final String DATABASE_PATH_LOCAL = "rapidandroid.db";
 
 	private boolean useLocal = false;

@@ -41,10 +41,10 @@ public class RapidAndroidApplication extends Application {
 
 	public static final String DIR_RAPIDANDROID_LOGS = "rapidandroid/logs";
 	public static final String DIR_RAPIDANDROID_EXPORTS = "rapidandroid/exports";
+	public static final File DIR_SDCARD = Environment.getExternalStorageDirectory();
 
 	private void configureLog4j() {
-        String fileName = Environment.getExternalStorageDirectory() + "/" + DIR_RAPIDANDROID_LOGS + "/"
-                + SystemHealthTracking.logName; 
+        String fileName = DIR_SDCARD + "/" + DIR_RAPIDANDROID_LOGS + "/" + SystemHealthTracking.logName; 
         String filePattern = "%d - [%c] - %p : %m%n";
         int maxBackupSize = 10;
         long maxFileSize = 1024 * 1024;
@@ -57,8 +57,7 @@ public class RapidAndroidApplication extends Application {
 	 * TODO: behavior if sdcard not mounted
 	 */
 	private void makeLogDir() {
-		File sdcard = Environment.getExternalStorageDirectory();
-		File logDestination = new File(sdcard, DIR_RAPIDANDROID_LOGS);
+		File logDestination = new File(DIR_SDCARD, DIR_RAPIDANDROID_LOGS);
 		if (logDestination.mkdir()){
 			Log.d("RapidAndroidApplication", DIR_RAPIDANDROID_LOGS + " directory created");
 		}
@@ -69,8 +68,7 @@ public class RapidAndroidApplication extends Application {
 	 * TODO: behavior if sdcard not mounted
 	 */
 	private void makeExportsDir() {
-		File sdcard = Environment.getExternalStorageDirectory();
-		File exportsDestination = new File(sdcard, DIR_RAPIDANDROID_EXPORTS);
+		File exportsDestination = new File(DIR_SDCARD, DIR_RAPIDANDROID_EXPORTS);
 		if (exportsDestination.mkdir()){
 			Log.d("RapidAndroidApplication", DIR_RAPIDANDROID_EXPORTS + "directory created");
 		}
@@ -164,7 +162,7 @@ public class RapidAndroidApplication extends Application {
 		File privateFile = new File("/data/data/org.rapidandroid/shared_prefs/"+prefsFileName +".xml");
 		boolean privateFileExists = privateFile.exists();
 		
-		File sdFile = new File("/sdcard/rapidandroid/"+prefsFileName + "Config.xml");
+		File sdFile = new File(DIR_SDCARD + "/rapidandroid/" +prefsFileName + "Config.xml");
 		boolean sdFileExists = sdFile.exists();
 		
 		if (privateFileExists && sdFileExists){
