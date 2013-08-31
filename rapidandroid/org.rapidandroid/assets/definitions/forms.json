@@ -6,6 +6,11 @@
  
 {"pk": 2, "model": "rapidandroid.form", 
  "fields": {"parsemethod": "simpleregex", 
- "prefix": "nutrition", "description": "Nutrition Information (monitorin and evaluation)", 
- "formname": "Nutrition"}}
+ "prefix": "nutrition", "description": "Nutrition Information (monitoring and evaluation)", 
+ "formname": "Nutrition"}},
+ 
+{"pk": 3, "model": "rapidandroid.form", 
+ "fields": {"parsemethod": "strictregex", 
+ "prefix": "demo", "description": "SAGES Demo (patient visit)", 
+ "formname": "SAGES Demo"}}
 ]
