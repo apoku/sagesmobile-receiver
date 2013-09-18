@@ -1,0 +1,60 @@
+# view AndroidManifest.xml #generated:132
+-keep class android.test.InstrumentationTestRunner { <init>(...); }
+
+# view AndroidManifest.xml #generated:15
+-keep class org.rapidandroid.RapidAndroidApplication { <init>(...); }
+
+# view AndroidManifest.xml #generated:123
+-keep class org.rapidandroid.activity.AddField { <init>(...); }
+
+# view AndroidManifest.xml #generated:122
+-keep class org.rapidandroid.activity.ChartData { <init>(...); }
+
+# view AndroidManifest.xml #generated:75
+-keep class org.rapidandroid.activity.CsvOutputScheduler { <init>(...); }
+
+# view AndroidManifest.xml #generated:21
+-keep class org.rapidandroid.activity.Dashboard { <init>(...); }
+
+# view AndroidManifest.xml #generated:125
+-keep class org.rapidandroid.activity.DateRange { <init>(...); }
+
+# view AndroidManifest.xml #generated:124
+-keep class org.rapidandroid.activity.FileBrowser { <init>(...); }
+
+# view AndroidManifest.xml #generated:60
+-keep class org.rapidandroid.activity.FormCreator { <init>(...); }
+
+# view AndroidManifest.xml #generated:67
+-keep class org.rapidandroid.activity.FormListView { <init>(...); }
+
+# view AndroidManifest.xml #generated:58
+-keep class org.rapidandroid.activity.FormReviewer { <init>(...); }
+
+# view AndroidManifest.xml #generated:126
+-keep class org.rapidandroid.activity.GlobalSettings { <init>(...); }
+
+# view AndroidManifest.xml #generated:16
+-keep class org.rapidandroid.content.RapidSmsContentProvider { <init>(...); }
+
+# view AndroidManifest.xml #generated:98
+-keep class org.rapidandroid.receiver.CsvReceiver { <init>(...); }
+
+# view AndroidManifest.xml #generated:104
+-keep class org.rapidandroid.receiver.SmsForwardReceiver { <init>(...); }
+
+# view AndroidManifest.xml #generated:116
+-keep class org.rapidandroid.receiver.SmsParseReceiver { <init>(...); }
+
+# view AndroidManifest.xml #generated:28
+-keep class org.rapidandroid.receiver.SmsReceiver { <init>(...); }
+
+# view AndroidManifest.xml #generated:110
+-keep class org.rapidandroid.receiver.SmsReplyReceiver { <init>(...); }
+
+# view AndroidManifest.xml #generated:89
+-keep class org.rapidandroid.service.CsvOutputService { <init>(...); }
+
+# view AndroidManifest.xml #generated:85
+-keep class org.rapidandroid.service.QueueAndPollService { <init>(...); }
+

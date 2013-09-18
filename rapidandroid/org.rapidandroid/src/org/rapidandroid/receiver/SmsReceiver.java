@@ -173,7 +173,7 @@ public class SmsReceiver extends BroadcastReceiver {
 			// check for multi-part attributes & send SMSMULTI_SAVED
 			if (true) {
 				SagesPdu mesgAsPdu = MessageBodyParser.extractSegmentAsPdu(mesg.getMessageBody(), mesg.getOriginatingAddress());
-				if (mesgAsPdu == null) { // means didn't match multipart criteria
+				if (mesgAsPdu == null || mesgAsPdu.getTxId() == -1) { // means didn't match multipart criteria
 					context.sendBroadcast(broadcast); //means it was a regular SMS but not multipart!
 					// return
 					// break?
