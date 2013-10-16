@@ -42,6 +42,7 @@ import android.telephony.SmsMessage;
 import android.util.Log;
 import edu.jhuapl.sages.mobile.lib.rapidandroid.MessageBodyParser;
 import edu.jhuapl.sages.mobile.lib.rapidandroid.MessageBodyParser.SagesPdu;
+import edu.jhuapl.sages.mobile.lib.receiver.RapidAndroidSagesSmsReceiver;
 
 /**
  * 
@@ -273,10 +274,9 @@ public class SmsReceiver extends BroadcastReceiver {
 	@Override
 	// source: http://www.devx.com/wireless/Article/39495/1954
 	public void onReceive(Context context, Intent intent) {
-		if (!intent.getAction().equals("android.provider.Telephony.SMS_RECEIVED")) {// {
-			Log.d("Test Intent","The intent was not a Telephony intent");
-			return;
-			
+		if (!(intent.getAction().equals("android.provider.Telephony.SMS_RECEIVED") | intent.getAction().equals(RapidAndroidSagesSmsReceiver.RAPIDANDROID_SMS_RECEIVED))) {
+				Log.d("Test Intent","The intent was not a Telephony intent");
+				return;
 		}
 		
 		healthTracker.logInfo(SagesEventType.SMS_RECEIVED);
